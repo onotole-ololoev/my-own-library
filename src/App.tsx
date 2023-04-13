@@ -1,16 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import "./app.scss"
 import {Header} from "./components/header/header";
-import {Navigation} from "./components/navigation/navigation";
+import {Toolbar} from "./components/navigation/toolbar";
 import {BookCard} from "./components/bookCard/bookCard";
 
 function App() {
+
+    const [view, setView] = useState('tile');
+
     return (
         <div className="wrapper">
             <Header/>
-            <Navigation />
-            <BookCard />
+            <Toolbar view={view} onChangeView={setView}/>
+
+            <BookCard view={view}/>
+            <BookCard view={view}/>
+            <BookCard view={view}/>
+            <BookCard view={view}/>
+
+
         </div>
     );
 }

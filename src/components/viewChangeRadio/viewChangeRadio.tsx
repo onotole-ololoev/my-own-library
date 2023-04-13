@@ -1,22 +1,27 @@
 import React, {useState} from 'react';
 import type {RadioChangeEvent} from 'antd';
-import {Button, Radio} from 'antd';
-
-import './styles.scss'
+import {Radio} from 'antd';
 import {AppstoreOutlined, BarsOutlined, SortAscendingOutlined} from "@ant-design/icons";
 
 
+import './styles.scss'
+
+type  ViewChangeRadioType = {
+    view: string
+    onChangeView: (el: string) => void
+}
+
 const options = [
-    {label: <AppstoreOutlined />, value: 'TileView'},
-    {label: <BarsOutlined />, value: 'ListView'}
+    {label: <AppstoreOutlined/>, value: 'tile'},
+    {label: <BarsOutlined/>, value: 'list'}
 ];
 
-export const ViewChangeRadio: React.FC = () => {
+export const ViewChangeRadio: React.FC<ViewChangeRadioType> = ({view, onChangeView}) => {
 
-    const [value, setValue] = useState('TileView');
+    // const [value, setValue] = useState('TileView');
 
     const onChange = ({target: {value}}: RadioChangeEvent) => {
-        setValue(value);
+        onChangeView(value);
     };
 
     return (
@@ -24,7 +29,7 @@ export const ViewChangeRadio: React.FC = () => {
             <Radio.Group
                 options={options}
                 onChange={onChange}
-                value={value}
+                value={view}
                 optionType="button"
                 buttonStyle="solid"
             />
