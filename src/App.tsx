@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 
-import "./app.scss"
+
 import {Header} from "./components/header/header";
 import {Toolbar} from "./components/navigation/toolbar";
 import {BookCard} from "./components/bookCard/bookCard";
+
+import "./app.scss"
 
 function App() {
 
@@ -13,7 +15,6 @@ function App() {
         <div className="wrapper">
             <Header/>
             <Toolbar view={view} onChangeView={setView}/>
-
 
             <BookCard view={view}/>
             <BookCard view={view}/>

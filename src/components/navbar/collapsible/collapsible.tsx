@@ -3,16 +3,16 @@ import { classNames as cx } from '../../../utils/index';
 import './styles.scss';
 
 type CollapsibleType = {
-    className: any
+
     title: string
-    children: React.ReactNode
+    children?: React.ReactNode
 
 }
 
 export const Collapsible = (props: CollapsibleType) => {
     const [isOpen, setOpen] = useState(false);
 
-    const classNames: any = cx('collapsible', props.className, {
+    const classNames: any = cx('collapsible', {
         'collapsible__opened': isOpen,
     });
 

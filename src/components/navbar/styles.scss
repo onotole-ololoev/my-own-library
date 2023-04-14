@@ -1,11 +1,27 @@
 .navbar {
   padding-left: 0;
 
+  &-link {
+    font-size: 18px;
+    &--active {
+      color: cadetblue;
+      font-weight: bold;
+
+    }
+  }
+
   &-item {
     list-style-type: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 0;
+
+    &:nth-child(4) {
+      border-top: 1px solid rgba(5, 5, 5, 0.06);
+    }
 
     &__link {
-
+      color: #363636;
     }
   }
 }

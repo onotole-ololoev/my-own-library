@@ -1,0 +1,13 @@
+.category-list {
+  padding: 15px 0 0 10px;
+  font-weight: normal;
+  &__link {
+    color: #363636;
+    font-size: 16px;
+  }
+  &__count {
+    padding-left: 10px;
+    font-size: 14px;
+    color: #A7A7A7;
+  }
+}
