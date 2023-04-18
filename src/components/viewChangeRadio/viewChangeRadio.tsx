@@ -25,14 +25,12 @@ export const ViewChangeRadio: React.FC<ViewChangeRadioType> = ({view, onChangeVi
     };
 
     return (
-        <>
-            <Radio.Group
-                options={options}
-                onChange={onChange}
-                value={view}
-                optionType="button"
-                buttonStyle="solid"
-            />
-        </>
+        <Radio.Group
+            options={options}
+            onChange={onChange}
+            value={view}
+            optionType="button"
+            buttonStyle="solid"
+        />
     );
 };

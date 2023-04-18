@@ -1,4 +1,7 @@
 .collapsible {
+  &__head {
+    color: #363636;
+  }
   &:hover {
     cursor: pointer;
   }
