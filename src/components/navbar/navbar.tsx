@@ -6,8 +6,12 @@ import {BooksCategoryList} from "./booksCategoryList/booksCategoryList";
 
 import './styles.scss'
 
+type NavbarType = {
+    onClose?: () => void
+}
 
-export const Navbar = () => {
+
+export const Navbar = (props: NavbarType) => {
 
     // const onClickLink = (e: any) => {
     //     e.preventDefault();
@@ -33,7 +37,9 @@ export const Navbar = () => {
             <li className={'navbar-item'}>
                 <a href="#" className={'navbar-item__link'}>Выход</a>
             </li>
-
+            <li className={'navbar-item'}>
+                <NavLink to="/rules" className={'navbar-item__link'} onClick={props.onClose}>rules</NavLink>
+            </li>
 
             {/*<li className={'navbar-item'}>*/}
             {/*    <NavLink to={'#'} onClick={onClickLink}*/}

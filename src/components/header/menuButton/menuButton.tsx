@@ -34,7 +34,7 @@ export const MenuButton: React.FC = () => {
                 onClose={onClose}
                 open={open}
             >
-                <Navbar />
+                <Navbar onClose={onClose}/>
             </Drawer>
         </>
     );

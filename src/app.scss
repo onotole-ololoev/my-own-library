@@ -3,12 +3,26 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+a {
+  text-decoration: none;
+}
+ul {
+  padding-left: 0;
+}
+li {
+  list-style-type: none;
+}
 .wrapper {
+  min-height: 100vh;
   margin: 0 auto;
   padding: 0 15px 5px;
-  //max-width: 320px;
+  max-width: 1230px;
   color: #363636;
-  background: rgba(169, 220, 243, 0.64);
-
+  background: rgba(146, 223, 246, 0.64);
+}
+.inner {
+  display: flex;
+}
+.inner:nth-child(2) {
+  width: 60%;
 }
