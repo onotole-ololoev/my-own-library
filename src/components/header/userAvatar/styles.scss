@@ -1,7 +1,10 @@
 .user-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 2px solid #727272;
-  background: #A7A7A7;
+  cursor: pointer;
+  &__img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #727272;
+    background: #A7A7A7;
+  }
 }
