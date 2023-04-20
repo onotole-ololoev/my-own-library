@@ -3,8 +3,9 @@ import {Button, Drawer, Space} from 'antd';
 import type {DrawerProps} from 'antd/es/drawer';
 import {MenuOutlined} from "@ant-design/icons";
 
-import "./styles.scss";
+
 import {Navbar} from "../../navbar/navbar";
+import "./styles.scss";
 
 
 export const MenuButton: React.FC = () => {
@@ -22,11 +23,11 @@ export const MenuButton: React.FC = () => {
 
     return (
         <>
-            <Space>
-                <Button type="text" onClick={showDefaultDrawer}>
+            {/*<Space>*/}
+                <Button type="text" onClick={showDefaultDrawer} className={'menu-btn'}>
                     <MenuOutlined />
                 </Button>
-            </Space>
+            {/*</Space>*/}
             <Drawer
                 title={`Библиотека`}
                 placement="left"

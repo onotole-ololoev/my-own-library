@@ -1,3 +1,14 @@
 .title {
   font-size: 18px;
+  padding-left: 20px;
+}
+@media (min-width: 320px) {
+  .title {
+    font-size: 24px;
+  }
+}
+@media (min-width: 1100px) {
+  .title {
+    font-size: 26px;
+  }
 }

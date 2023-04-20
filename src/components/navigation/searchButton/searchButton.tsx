@@ -25,7 +25,7 @@ export const SearchButton: React.FC<SearchButtonType> = ({setIsInputAvailable, i
                 </Tooltip>
                 :
                 <>
-                    <Button shape="circle" icon={<CloseOutlined />} onClick={setInputView}/>
+                    <Button shape="circle" icon={<CloseOutlined />} onClick={setInputView} className={'close-btn'}/>
                     <InputField/>
                 </>
 

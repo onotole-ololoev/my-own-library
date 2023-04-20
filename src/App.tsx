@@ -20,16 +20,21 @@ function App() {
     return (
         <div className="wrapper">
             <Header/>
-            <Toolbar view={view} onChangeView={setView}/>
+            {/*<Toolbar view={view} onChangeView={setView}/>*/}
             <div className={'inner'}>
                 {isMobile || isTablet ? null : <Navbar />}
-                <Routes>
-                    <Route path='/' element={<MainPage view={view}/>}/>
-                    <Route path='/business' element={<MainPage view={view}/>}/>
-                    <Route path='/detective' element={<MainPage view={view}/>}/>
-                    <Route path='/rules' element={<RulesPage />}/>
-                    <Route path='/contract' element={<ContractPage />}/>
-                </Routes>
+                <div>
+                    <Toolbar view={view} onChangeView={setView}/>
+                    <Routes>
+                        <Route path='/' element={<MainPage view={view}/>}/>
+                        <Route path='/business' element={<MainPage view={view}/>}/>
+                        <Route path='/detective' element={<MainPage view={view}/>}/>
+                        <Route path='/rules' element={<RulesPage />}/>
+                        <Route path='/contract' element={<ContractPage />}/>
+                        <Route path='/logout' element={<div>logout</div>}/>
+                        <Route path='/profile' element={<div>profile</div>}/>
+                    </Routes>
+                </div>
             </div>
 
             {/*<BookCard view={view}/>*/}
