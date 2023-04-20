@@ -1,10 +1,21 @@
 import React from 'react';
+
+import {BookCard} from "../../components/bookCard/bookCard";
+
 import './styles.scss'
 
-export const MainPage = () => {
+
+type MainPageType = {
+    view: string
+}
+
+export const MainPage = (props: MainPageType) => {
     return (
         <div>
-            main page
+            <BookCard view={props.view}/>
+            <BookCard view={props.view}/>
+            <BookCard view={props.view}/>
+            <BookCard view={props.view}/>
         </div>
     );
 };

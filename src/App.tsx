@@ -3,9 +3,6 @@ import {Routes, Route} from 'react-router-dom'
 
 import {Header} from "./components/header/header";
 import {Toolbar} from "./components/navigation/toolbar";
-import {BookCard} from "./components/bookCard/bookCard";
-
-
 import {MainPage} from "./pages/mainPage/mainPage";
 import {RulesPage} from "./pages/rulesPage/rulesPage";
 import {ContractPage} from "./pages/contractPage/contractPage";
@@ -27,9 +24,9 @@ function App() {
             <div className={'inner'}>
                 {isMobile || isTablet ? null : <Navbar />}
                 <Routes>
-                    <Route path='/' element={<MainPage/>}/>
-                    <Route path='/business' element={<MainPage/>}/>
-                    <Route path='/detective' element={<MainPage/>}/>
+                    <Route path='/' element={<MainPage view={view}/>}/>
+                    <Route path='/business' element={<MainPage view={view}/>}/>
+                    <Route path='/detective' element={<MainPage view={view}/>}/>
                     <Route path='/rules' element={<RulesPage />}/>
                     <Route path='/contract' element={<ContractPage />}/>
                 </Routes>

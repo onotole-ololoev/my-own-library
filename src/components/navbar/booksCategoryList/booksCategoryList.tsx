@@ -1,31 +1,35 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom'
 
 import './styles.scss'
 
-export const BooksCategoryList = () => {
+type BooksCategoryListType = {
+    onCloseModal?: () => void
+}
+
+export const BooksCategoryList = (props: BooksCategoryListType) => {
     return (
         <ul className={"category-list"}>
-            <li><a href="#" className={"category-list__link"}>Все книги</a><span className={"category-list__count"}>1134</span></li>
-            <li><a href="#" className={"category-list__link"}>Бизнес-книги</a><span className={"category-list__count"}>11</span></li>
-            <li><a href="#" className={"category-list__link"}>Детективы</a><span className={"category-list__count"}>1</span></li>
-            <li><a href="#" className={"category-list__link"}>Зарубежная литература</a><span className={"category-list__count"}>345</span></li>
-            <li><a href="#" className={"category-list__link"}>История</a><span className={"category-list__count"}>0</span></li>
-            <li><a href="#" className={"category-list__link"}>Все книги</a><span className={"category-list__count"}>1134</span></li>
-            <li><a href="#" className={"category-list__link"}>Бизнес-книги</a><span className={"category-list__count"}>11</span></li>
-            <li><a href="#" className={"category-list__link"}>Детективы</a><span className={"category-list__count"}>1</span></li>
-            <li><a href="#" className={"category-list__link"}>Зарубежная литература</a><span className={"category-list__count"}>345</span></li>
-            <li><a href="#" className={"category-list__link"}>История</a><span className={"category-list__count"}>0</span></li>
-            <li><a href="#" className={"category-list__link"}>Все книги</a><span className={"category-list__count"}>1134</span></li>
-            <li><a href="#" className={"category-list__link"}>Бизнес-книги</a><span className={"category-list__count"}>11</span></li>
-            <li><a href="#" className={"category-list__link"}>Детективы</a><span className={"category-list__count"}>1</span></li>
-            <li><a href="#" className={"category-list__link"}>Зарубежная литература</a><span className={"category-list__count"}>345</span></li>
-            <li><a href="#" className={"category-list__link"}>История</a><span className={"category-list__count"}>0</span></li>
-            <li><a href="#" className={"category-list__link"}>Все книги</a><span className={"category-list__count"}>1134</span></li>
-            <li><a href="#" className={"category-list__link"}>Бизнес-книги</a><span className={"category-list__count"}>11</span></li>
-            <li><a href="#" className={"category-list__link"}>Детективы</a><span className={"category-list__count"}>1</span></li>
-            <li><a href="#" className={"category-list__link"}>Зарубежная литература</a><span className={"category-list__count"}>345</span></li>
-            <li><a href="#" className={"category-list__link"}>История</a><span className={"category-list__count"}>0</span></li>
-
+            <li>
+                <NavLink to="/" className={'category-list__link'} onClick={props.onCloseModal}>Все книги <span
+                    className={"category-list__count"}>1134</span></NavLink>
+            </li>
+            <li>
+                <NavLink to="/business" className={'category-list__link'} onClick={props.onCloseModal}>Бизнес-книги<span
+                    className={"category-list__count"}>1134</span></NavLink>
+            </li>
+            <li>
+                <NavLink to="/detective" className={'category-list__link'} onClick={props.onCloseModal}>Детективы<span
+                    className={"category-list__count"}>1134</span></NavLink>
+            </li>
+            <li>
+                <NavLink to="/history" className={'category-list__link'} onClick={props.onCloseModal}>История<span
+                    className={"category-list__count"}>1134</span></NavLink>
+            </li>
+            <li>
+                <NavLink to="/comedy" className={'category-list__link'} onClick={props.onCloseModal}>Комедия<span
+                    className={"category-list__count"}>1134</span></NavLink>
+            </li>
         </ul>
     );
 };
