@@ -20,12 +20,10 @@ export const SearchButton: React.FC<SearchButtonType> = ({setIsInputAvailable, i
         return (
             isInputAvailable === false
                 ?
-                <Tooltip title="search">
-                    <Button shape="circle" icon={<SearchOutlined/>} onClick={setInputView}/>
-                </Tooltip>
+                <Button shape="circle" icon={<SearchOutlined/>} onClick={setInputView}/>
                 :
                 <>
-                    <Button shape="circle" icon={<CloseOutlined />} onClick={setInputView} className={'close-btn'}/>
+                    <Button shape="circle" icon={<CloseOutlined/>} onClick={setInputView} className={'close-btn'}/>
                     <InputField/>
                 </>
 
