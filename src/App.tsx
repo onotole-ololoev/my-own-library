@@ -10,6 +10,7 @@ import {Navbar} from "./components/navbar/navbar";
 import {useResponsive} from "./components/hooks/useResponsive";
 
 import "./app.scss"
+import {Footer} from "./components/footer/footer";
 
 function App() {
 
@@ -22,20 +23,21 @@ function App() {
             <Header/>
             {/*<Toolbar view={view} onChangeView={setView}/>*/}
             <div className={'inner'}>
-                {isMobile || isTablet ? null : <Navbar />}
+                {isMobile || isTablet ? null : <Navbar/>}
                 <div>
                     <Toolbar view={view} onChangeView={setView}/>
                     <Routes>
                         <Route path='/' element={<MainPage view={view}/>}/>
                         <Route path='/business' element={<MainPage view={view}/>}/>
                         <Route path='/detective' element={<MainPage view={view}/>}/>
-                        <Route path='/rules' element={<RulesPage />}/>
-                        <Route path='/contract' element={<ContractPage />}/>
+                        <Route path='/rules' element={<RulesPage/>}/>
+                        <Route path='/contract' element={<ContractPage/>}/>
                         <Route path='/logout' element={<div>logout</div>}/>
                         <Route path='/profile' element={<div>profile</div>}/>
                     </Routes>
                 </div>
             </div>
+            <Footer />
 
             {/*<BookCard view={view}/>*/}
             {/*<BookCard view={view}/>*/}
