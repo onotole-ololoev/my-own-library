@@ -31,6 +31,9 @@ export const Navbar = (props: NavbarType) => {
             <li className={'navbar-item'}>
                 <NavLink to="/logout" className={'navbar-item__link'} onClick={props.onClose}>Выход</NavLink>
             </li>
+            <li className={'navbar-item'}>
+                <NavLink to="/admin" className={'navbar-item__link'} onClick={props.onClose}>adminTools</NavLink>
+            </li>
         </ul>
     );
 };

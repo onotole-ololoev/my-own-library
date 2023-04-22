@@ -19,10 +19,15 @@ li {
   max-width: 1230px;
   color: #363636;
   background: rgba(146, 223, 246, 0.64);
+  &__page {
+    width: 100%;
+  }
 }
 .inner {
   display: flex;
+  min-height: calc(100vh - 170px);
 }
 .inner:nth-child(2) {
-  width: 60%;
+
 }
+

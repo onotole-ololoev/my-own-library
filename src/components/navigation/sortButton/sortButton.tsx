@@ -1,9 +1,7 @@
 import React from 'react';
 import {SortAscendingOutlined} from '@ant-design/icons';
-import {Button, Tooltip} from 'antd';
+import {Button} from 'antd';
 
 export const SortButton: React.FC = () => (
-    <Tooltip title="sort">
-        <Button shape="circle" icon={<SortAscendingOutlined/>}/>
-    </Tooltip>
+    <Button shape="circle" icon={<SortAscendingOutlined/>}/>
 );

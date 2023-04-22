@@ -8,9 +8,10 @@ import {RulesPage} from "./pages/rulesPage/rulesPage";
 import {ContractPage} from "./pages/contractPage/contractPage";
 import {Navbar} from "./components/navbar/navbar";
 import {useResponsive} from "./components/hooks/useResponsive";
-
-import "./app.scss"
 import {Footer} from "./components/footer/footer";
+import "./app.scss"
+import {AdminPage} from "./pages/adminPage/adminPage";
+
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
             {/*<Toolbar view={view} onChangeView={setView}/>*/}
             <div className={'inner'}>
                 {isMobile || isTablet ? null : <Navbar/>}
-                <div>
+                <div className={'wrapper__page'}>
                     <Toolbar view={view} onChangeView={setView}/>
                     <Routes>
                         <Route path='/' element={<MainPage view={view}/>}/>
@@ -34,6 +35,7 @@ function App() {
                         <Route path='/contract' element={<ContractPage/>}/>
                         <Route path='/logout' element={<div>logout</div>}/>
                         <Route path='/profile' element={<div>profile</div>}/>
+                        <Route path='/admin' element={<AdminPage />}/>
                     </Routes>
                 </div>
             </div>
