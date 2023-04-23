@@ -1,6 +1,9 @@
 import { Button, Form, Input, Select, InputNumber } from 'antd';
 import React from 'react';
 
+import './styles.scss'
+
+
 const { Option } = Select;
 
 const layout = {
@@ -101,7 +104,7 @@ export const AdminPage: React.FC = () => {
             <Form.Item name="description" label="description" >
                 <Input />
             </Form.Item>
-            <Form.Item {...tailLayout}>
+            <Form.Item {...tailLayout} className={'form-item__btns'}>
                 <Button type="primary" htmlType="submit">
                     add book
                 </Button>
