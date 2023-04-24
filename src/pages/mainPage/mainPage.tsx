@@ -13,16 +13,12 @@ type MainPageType = {
 
 export const MainPage = (props: MainPageType) => {
     return (
-        <div>
+        <div className={'books-page'}>
             {props.books.map(el => {
                 return (
                     <BookCard key={el.id} rating={el.rating} title={el.title} author={el.author} view={props.view} cover={el.cover}/>
                 )
             })}
-            {/*<BookCard view={props.view}/>*/}
-            {/*<BookCard view={props.view}/>*/}
-            {/*<BookCard view={props.view}/>*/}
-            {/*<BookCard view={props.view}/>*/}
         </div>
     );
 };
