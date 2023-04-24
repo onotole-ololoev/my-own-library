@@ -2,14 +2,15 @@ import React from 'react';
 
 import './styles.scss'
 
-export const BookTitle = () => {
+type BookTitleType = {
+    title: string
+}
+
+export const BookTitle = (props: BookTitleType) => {
     return (
         <div>
             <h3 className={'book-card__title'}>
-                Для современного мира граница обучения кадров,
-                для современного мира граница обучения кадров,
-                Для современного мира граница обучения кадров,
-                для современного мира граница обучения кадров
+                {props.title}
             </h3>
         </div>
     );

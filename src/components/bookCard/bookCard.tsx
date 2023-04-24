@@ -12,6 +12,10 @@ import './styles.scss'
 
 type BookCardType = {
     view: string
+    cover?: string[]
+    rating?: number
+    author: string
+    title: string
 }
 
 export const BookCard = (props: BookCardType) => {
@@ -21,15 +25,17 @@ export const BookCard = (props: BookCardType) => {
         [`book-wrapper__list`]: props.view === 'list'
     })
 
+    console.log(props.cover)
+
     return (
         // className={'book-wrapper'}
         <div className={classNames}>
             {/*<BookCoverEmpty />*/}
-            <BookCover />
+            <BookCover cover={props.cover}/>
             <div className={'book-info'}>
                 <BookRating />
-                <BookTitle />
-                <BookAuthor />
+                <BookTitle title={props.title}/>
+                <BookAuthor author={props.author}/>
                 <BookButton />
             </div>
         </div>

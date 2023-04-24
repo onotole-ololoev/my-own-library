@@ -2,12 +2,14 @@ import React from 'react';
 
 import './styles.scss'
 
-export const BookAuthor = () => {
+type BookAuthorType = {
+    author: string
+}
+
+export const BookAuthor = (props: BookAuthorType) => {
     return (
         <div className={'book-author'}>
-            Адитья Бхаргава, Адитья Бхаргава, Адитья Бхаргава,
-            Адитья Бхаргава, Адитья Бхаргава, Адитья Бхаргава,
-            Адитья Бхаргава, Адитья Бхаргава, Адитья Бхаргава,
+            {props.author}
         </div>
     );
 };
