@@ -9,10 +9,12 @@ import {ContractPage} from "./pages/contractPage/contractPage";
 import {Navbar} from "./components/navbar/navbar";
 import {useResponsive} from "./components/hooks/useResponsive";
 import {Footer} from "./components/footer/footer";
-import "./app.scss"
 import {AdminPage} from "./pages/adminPage/adminPage";
 import {BookType, libraryAPI} from "./api/library-api";
+import {BookPage} from "./pages/bookPage/bookPage";
 
+
+import "./app.scss"
 
 function App() {
 
@@ -28,6 +30,7 @@ function App() {
         fetchData();
     }, []);
 
+    console.log(books)
 
     return (
         <div className="wrapper">
@@ -43,6 +46,20 @@ function App() {
                         <Route path='/logout' element={<div>logout</div>}/>
                         <Route path='/profile' element={<div>profile</div>}/>
                         <Route path='/admin' element={<AdminPage/>}/>
+                        {/*<Route path='/book' element={<BookPage />}/>*/}
+                        {books.map(el => {
+                            return (
+                                <Route path={`/book/${el.id}`}
+                                       element={<BookPage key={el.id} category={el.category} author={el.author}
+                                                          title={el.title} description={el.description}
+                                                          format={el.format} cover={el.cover} rating={el.rating}
+                                                          binding={el.binding} genre={el.genre} bookedFor={el.bookedFor}
+                                                          isBooked={el.isBooked} isAvailable={el.isAvailable}
+                                                          publishingHouse={el.publishingHouse}
+                                                          manufacturer={el.manufacturer} pages={el.pages}
+                                                          weight={el.weight} year={el.year}/>}/>
+                            )
+                        })}
                     </Routes>
                 </div>
             </div>

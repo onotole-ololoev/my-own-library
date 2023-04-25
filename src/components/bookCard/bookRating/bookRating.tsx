@@ -3,4 +3,9 @@ import { Rate } from 'antd';
 
 import './styles.scss';
 
-export const BookRating: React.FC = () => <Rate className={'book-rating'}/>;
+
+type BookRatingType = {
+    rating?: number
+}
+
+export const BookRating: React.FC<BookRatingType> = ({rating}) => <Rate className={'book-rating'} value={rating}/>;
