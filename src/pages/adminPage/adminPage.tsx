@@ -2,6 +2,8 @@ import { Button, Form, Input, Select, InputNumber } from 'antd';
 import React from 'react';
 
 import './styles.scss'
+import {log} from "util";
+import {libraryAPI} from "../../api/library-api";
 
 
 const { Option } = Select;
@@ -31,7 +33,17 @@ export const AdminPage: React.FC = () => {
 
     const onReset = () => {
         form.resetFields();
+
     };
+
+    const onAddNewBook = () => {
+        let formData = form.getFieldsValue()
+        const fetchData = async () => {
+            await libraryAPI.addNewBook({...formData})
+        };
+        fetchData();
+
+    }
 
     return (
         <Form
@@ -105,7 +117,7 @@ export const AdminPage: React.FC = () => {
                 <Input />
             </Form.Item>
             <Form.Item {...tailLayout} className={'form-item__btns'}>
-                <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit" onClick={onAddNewBook}>
                     add book
                 </Button>
                 <Button htmlType="button" onClick={onReset}>

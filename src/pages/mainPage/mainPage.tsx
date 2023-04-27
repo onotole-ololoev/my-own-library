@@ -16,7 +16,7 @@ export const MainPage = (props: MainPageType) => {
         <div className={'books-page'}>
             {props.books.map(el => {
                 return (
-                    <BookCard key={el.id} rating={el.rating} title={el.title} author={el.author} view={props.view} cover={el.cover}/>
+                    <BookCard key={el.id} id={el.id} rating={el.rating} title={el.title} author={el.author} view={props.view} cover={el.cover}/>
                 )
             })}
         </div>

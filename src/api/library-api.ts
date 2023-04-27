@@ -3,6 +3,12 @@ import {instance} from "./baseInstance";
 export const libraryAPI = {
     getAllBooks() {
         return instance.get<ResponseBooksType>(`/api/books`)
+    },
+    getBook(id: string) {
+        return instance.get<BookType>(`/api/book/${id}`)
+    },
+    addNewBook({...formFields}: BookType){
+        return instance.post<BookType>('/api/book/', {...formFields})
     }
 }
 export type BookType =  {

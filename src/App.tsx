@@ -18,7 +18,30 @@ import "./app.scss"
 
 function App() {
 
-    const [books, setBooks] = useState<BookType[]>([])
+    const [books, setBooks] = useState<BookType[]>([
+        {
+            id: '1',
+            category: 'business',
+            cover: [''],
+            rating: 4,
+            title: 'Грокаем алгоритмы. Иллюстрированное',
+            author: 'Адитья Бхаргава, Патрик Нимейер',
+            year: '2019',
+            pages: '288',
+            binding: 'Мягкая обложка',
+            format: '70х100',
+            genre: 'Компьютерная литература',
+            weight: '370 г',
+            manufacturer: 'ООО «Питер Мейл». РФ, 198206, г. Санкт-Петербург, Петергофское ш, д. 73, лит. А29',
+            description: 'Алгоритмы— это всего лишь пошаговые алгоритмы решения задач, и большинство таких задач уже были кем-торешены, ' +
+                'протестированы и проверены. Можно, конечно, погрузится в глубокую философию гениального Кнута, изучить многостраничные фолианты' +
+                ' с доказательствами и обоснованиями, но хотите ли вы тратить на это свое время? Откройте великолепно иллюстрированную книгу и вы сразу поймете, ' +
+                'что алгоритмы — это просто. А грокать алгоритмы — это веселое и увлекательное занятие.',
+            isAvailable: true,
+            isBooked: false,
+            bookedFor: ''
+        }
+    ])
     const {isMobile, isTablet, isDesktop} = useResponsive()
     const [view, setView] = useState('tile');
 
@@ -30,7 +53,6 @@ function App() {
         fetchData();
     }, []);
 
-    console.log(books)
 
     return (
         <div className="wrapper">
@@ -48,8 +70,9 @@ function App() {
                         <Route path='/admin' element={<AdminPage/>}/>
                         {/*<Route path='/book' element={<BookPage />}/>*/}
                         {books.map(el => {
+                            console.log(el.id)
                             return (
-                                <Route path={`/book/${el.id}`}
+                                <Route path={`book/:${el.id}`}
                                        element={<BookPage key={el.id} category={el.category} author={el.author}
                                                           title={el.title} description={el.description}
                                                           format={el.format} cover={el.cover} rating={el.rating}
