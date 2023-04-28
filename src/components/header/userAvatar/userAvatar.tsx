@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
-import avatarUser from '../../../assets/logo.jpg'
+import avatarUser from '../../../assets/ava.png'
 
 import './styles.scss'
 
