@@ -53,6 +53,8 @@ function App() {
         fetchData();
     }, []);
 
+    console.log(books)
+
 
     return (
         <div className="wrapper">
@@ -72,7 +74,7 @@ function App() {
                         {books.map(el => {
                             return (
                                 <Route path={`/book/:${el.id}`}
-                                       element={<BookPage key={el.id} category={el.category} author={el.author}
+                                       element={<BookPage key={el.id} id={el.id} category={el.category} author={el.author}
                                                           title={el.title} description={el.description}
                                                           format={el.format} cover={el.cover} rating={el.rating}
                                                           binding={el.binding} genre={el.genre} bookedFor={el.bookedFor}

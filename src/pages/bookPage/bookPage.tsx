@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 
 import {BookPageHeader} from "./bookPageHeader/bookPageHeader";
@@ -10,9 +10,11 @@ import {BookPageText} from "./bookPageText/bookPageText";
 import {BookRating} from "../../components/bookCard/bookRating/bookRating";
 
 import './styles.scss'
+import {libraryAPI} from "../../api/library-api";
 
 
 type BookPageType = {
+    id: string
     title: string
     author: string
     category: string
@@ -33,30 +35,64 @@ type BookPageType = {
     cover?: [string]
 }
 
+
+
 export const BookPage = (props: BookPageType) => {
+
+    const [book, setBook] = useState({})
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await libraryAPI.getBook(props.id)
+            setBook(result.data);
+        };
+        fetchData();
+    }, []);
+
     return (
         <div>
             <BookPageHeader category={props.category} title={props.title}/>
-            <BookCover />
-            <BookTitle title={props.title} />
-            <BookAuthor author={props.author} />
-            <BookButton />
-            <BookTitle title={'About'} />
-            <BookPageText title={props.description} />
-            <BookTitle title={'Rating'} />
+            <BookCover/>
+            <BookTitle title={props.title}/>
+            <BookAuthor author={props.author}/>
+            <BookButton/>
+            <BookTitle title={'About'}/>
+            <BookPageText title={props.description}/>
+            <BookTitle title={'Rating'}/>
             <BookRating rating={props.rating}/>
-            <BookTitle title={'Detailed information'} />
+            <BookTitle title={'Detailed information'}/>
             <div className="book-page--content__info">
                 <table className="book-page--content__table">
-                    <tr><td className="book-page--content__td-title">Издательство</td><td className="book-page--content__td-text">{props.manufacturer}</td></tr>
-                    <tr><td className="book-page--content__td-title">Год издания</td><td className="book-page--content__td-text">{props.year}</td></tr>
-                    <tr><td className="book-page--content__td-title">Страниц</td><td className="book-page--content__td-text">{props.pages}</td></tr>
-                    <tr><td className="book-page--content__td-title">Переплёт</td><td className="book-page--content__td-text">{props.binding}</td></tr>
-                    <tr><td className="book-page--content__td-title">Формат</td><td className="book-page--content__td-text">{props.format}</td></tr>
+                    <tr>
+                        <td className="book-page--content__td-title">Издательство</td>
+                        <td className="book-page--content__td-text">{props.manufacturer}</td>
+                    </tr>
+                    <tr>
+                        <td className="book-page--content__td-title">Год издания</td>
+                        <td className="book-page--content__td-text">{props.year}</td>
+                    </tr>
+                    <tr>
+                        <td className="book-page--content__td-title">Страниц</td>
+                        <td className="book-page--content__td-text">{props.pages}</td>
+                    </tr>
+                    <tr>
+                        <td className="book-page--content__td-title">Переплёт</td>
+                        <td className="book-page--content__td-text">{props.binding}</td>
+                    </tr>
+                    <tr>
+                        <td className="book-page--content__td-title">Формат</td>
+                        <td className="book-page--content__td-text">{props.format}</td>
+                    </tr>
                 </table>
                 <table className="book-page--content__table">
-                    <tr><td className="book-page--content__td-title">Жанр</td><td className="book-page--content__td-text">{props.genre}</td></tr>
-                    <tr><td className="book-page--content__td-title">Вес</td><td className="book-page--content__td-text">{props.weight}</td></tr>
+                    <tr>
+                        <td className="book-page--content__td-title">Жанр</td>
+                        <td className="book-page--content__td-text">{props.genre}</td>
+                    </tr>
+                    <tr>
+                        <td className="book-page--content__td-title">Вес</td>
+                        <td className="book-page--content__td-text">{props.weight}</td>
+                    </tr>
                 </table>
             </div>
         </div>

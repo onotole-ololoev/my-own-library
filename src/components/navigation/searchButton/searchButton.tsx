@@ -5,6 +5,7 @@ import {InputField} from "../inputField/inputField";
 
 
 import './styles.scss'
+import {useResponsive} from "../../hooks/useResponsive";
 
 type SearchButtonType = {
     setIsInputAvailable: (value: boolean) => void
@@ -17,10 +18,19 @@ export const SearchButton: React.FC<SearchButtonType> = ({setIsInputAvailable, i
             setIsInputAvailable(!isInputAvailable)
         }
 
+        const {isMobile, isTablet, isDesktop} = useResponsive()
+
         return (
             isInputAvailable === false
                 ?
-                <Button shape="circle" icon={<SearchOutlined/>} onClick={setInputView}/>
+                <>
+                    {isMobile || isTablet
+                        ?
+                        <Button shape="circle" icon={<SearchOutlined/>} onClick={setInputView}/>
+                        :
+                        <InputField />
+                    }
+                </>
                 :
                 <>
                     <Button shape="circle" icon={<CloseOutlined/>} onClick={setInputView} className={'close-btn'}/>
