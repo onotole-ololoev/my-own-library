@@ -30,7 +30,9 @@ export const AdminPage: React.FC = () => {
     const onFinish = () => {
         let formData = form.getFieldsValue()
         const fetchData = async () => {
-            await libraryAPI.addNewBook({...formData})
+            await libraryAPI.addNewBook({...formData}).then(res => {
+                console.log(res.data.description)
+            })
         };
         fetchData()
     }

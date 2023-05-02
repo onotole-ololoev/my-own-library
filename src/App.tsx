@@ -18,6 +18,7 @@ import "./app.scss"
 
 function App() {
 
+
     const [books, setBooks] = useState<BookType[]>([
         // {
         //     id: '1',
@@ -46,15 +47,13 @@ function App() {
     const [view, setView] = useState('tile');
 
     useEffect(() => {
+
         const fetchData = async () => {
             const result = await libraryAPI.getAllBooks()
             setBooks(result.data.books);
         };
         fetchData();
-    }, []);
-
-    console.log(books)
-
+    }, [books]);
 
     return (
         <div className="wrapper">
@@ -72,6 +71,7 @@ function App() {
                         <Route path='/admin' element={<AdminPage/>}/>
                         {/*<Route path='/book' element={<BookPage />}/>*/}
                         {books.map(el => {
+
                             return (
                                 <Route path={`/book/:${el.id}`}
                                        element={<BookPage key={el.id} id={el.id} category={el.category} author={el.author}
