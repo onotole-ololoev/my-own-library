@@ -69,7 +69,7 @@ function App() {
                         <Route path='/logout' element={<div>logout</div>}/>
                         <Route path='/profile' element={<div>profile</div>}/>
                         <Route path='/admin' element={<AdminPage/>}/>
-                        {/*<Route path='/book' element={<BookPage />}/>*/}
+
                         {books.map(el => {
 
                             return (
