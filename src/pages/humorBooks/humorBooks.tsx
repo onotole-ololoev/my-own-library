@@ -1,23 +1,31 @@
-import React from 'react';
-
+import React, {useEffect, useState} from 'react';
 import {BookCard} from "../../components/bookCard/bookCard";
-
-
-import {BookType} from "../../api/library-api";
-
+import {BookType, libraryAPI} from "../../api/library-api";
 import '../mainPage/styles.scss'
 
-type MainPageType = {
+
+type HumorBooksType = {
     view: string
-    books: BookType[]
 }
 
-export const HumorPage = (props: MainPageType) => {
+export const HumorBooks = (props: HumorBooksType) => {
+
+
+    const [books, setBooks] = useState<BookType[]>([])
+
+    useEffect(() => {
+
+        const fetchData = async () => {
+            const result = await libraryAPI.getCategoryBooks('humor')
+            setBooks(result.data.books);
+        };
+        fetchData();
+    }, [books]);
+
+
     return (
         <div className={'books-page'}>
-            {props.books.filter(book => {
-                return book.category === 'humor'
-            }).map(el => {
+            {books.map(el => {
                 return (
                     <BookCard key={el.id} id={el.id} rating={el.rating} title={el.title} author={el.author} view={props.view} cover={el.cover}/>
                 )

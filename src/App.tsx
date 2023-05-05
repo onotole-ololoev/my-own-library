@@ -15,7 +15,7 @@ import {BookPage} from "./pages/bookPage/bookPage";
 
 
 import "./app.scss"
-import {HumorPage} from "./pages/humorBooks/humorBooks";
+import {HumorBooks} from "./pages/humorBooks/humorBooks";
 
 function App() {
 
@@ -66,7 +66,7 @@ function App() {
                     <Toolbar view={view} onChangeView={setView}/>
                     <Routes>
                         <Route path='/' element={<MainPage books={books} view={view}/>}/>
-                        <Route path='/humor' element={<HumorPage books={books} view={view}/>}/>
+                        <Route path='/humor' element={<HumorBooks view={view}/>}/>
                         <Route path='/rules' element={<RulesPage/>}/>
                         <Route path='/contract' element={<ContractPage/>}/>
                         <Route path='/logout' element={<div>logout</div>}/>
