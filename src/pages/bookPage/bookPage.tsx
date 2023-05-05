@@ -42,31 +42,31 @@ type BookPageType = {
 
 export const BookPage = (props: BookPageType) => {
 
-    const {id} = useParams();
-    console.log(id)
+
+
 
     const [book, setBook] = useState<BookPageType>({
-            id: '1',
-            category: 'business',
+            id: '',
+            category: '',
             cover: [''],
-            rating: 4,
-            title: 'Йооооооооооооооооууууууууууууууууу',
-            author: 'Адитья Бхаргава, Патрик Нимейер',
-            year: '2019',
-            pages: '288',
-            binding: 'Мягкая обложка',
-            format: '70х100',
-            genre: 'Компьютерная литература',
-            weight: '370 г',
-            manufacturer: 'ООО «Питер Мейл». РФ, 198206, г. Санкт-Петербург, Петергофское ш, д. 73, лит. А29',
-            description: 'Алгоритмы— это всего лишь пошаговые алгоритмы решения задач, и большинство таких задач уже были кем-торешены, ' +
-                'протестированы и проверены. Можно, конечно, погрузится в глубокую философию гениального Кнута, изучить многостраничные фолианты' +
-                ' с доказательствами и обоснованиями, но хотите ли вы тратить на это свое время? Откройте великолепно иллюстрированную книгу и вы сразу поймете, ' +
-                'что алгоритмы — это просто. А грокать алгоритмы — это веселое и увлекательное занятие.',
+            rating: 0,
+            title: '',
+            author: '',
+            year: '',
+            pages: '',
+            binding: '',
+            format: '',
+            genre: '',
+            weight: '',
+            manufacturer: '',
+            description: '',
             isAvailable: true,
             isBooked: false,
             bookedFor: ''
     })
+
+
+    // const hardId = '644b83fe4238ab0034f9e225'
 
     useEffect(() => {
         const fetchData = async () => {
@@ -74,55 +74,105 @@ export const BookPage = (props: BookPageType) => {
             setBook(result.data);
         };
         fetchData();
-    }, [book]);
+    }, []);
+
 
     return (
         <div>
-            <BookPageHeader category={props.category} title={props.title}/>
+            {/*<BookPageHeader category={props.book} title={props.title}/>*/}
+            {/*<BookCover/>*/}
+            {/*<BookTitle title={props.title}/>*/}
+            {/*<BookAuthor author={props.author}/>*/}
+            {/*<BookButton/>*/}
+            {/*<BookTitle title={'About'}/>*/}
+            {/*<BookPageText title={props.description}/>*/}
+            {/*<BookTitle title={'Rating'}/>*/}
+            {/*<BookRating rating={props.rating}/>*/}
+            {/*<BookTitle title={'Detailed information'}/>*/}
+            {/*<div className="book-page--content__info">*/}
+            {/*    <table className="book-page--content__table">*/}
+            {/*        <tr>*/}
+            {/*            <td className="book-page--content__td-title">Издательство</td>*/}
+            {/*            <td className="book-page--content__td-text">{props.manufacturer}</td>*/}
+            {/*        </tr>*/}
+            {/*        <tr>*/}
+            {/*            <td className="book-page--content__td-title">Год издания</td>*/}
+            {/*            <td className="book-page--content__td-text">{props.year}</td>*/}
+            {/*        </tr>*/}
+            {/*        <tr>*/}
+            {/*            <td className="book-page--content__td-title">Страниц</td>*/}
+            {/*            <td className="book-page--content__td-text">{props.pages}</td>*/}
+            {/*        </tr>*/}
+            {/*        <tr>*/}
+            {/*            <td className="book-page--content__td-title">Переплёт</td>*/}
+            {/*            <td className="book-page--content__td-text">{props.binding}</td>*/}
+            {/*        </tr>*/}
+            {/*        <tr>*/}
+            {/*            <td className="book-page--content__td-title">Формат</td>*/}
+            {/*            <td className="book-page--content__td-text">{props.format}</td>*/}
+            {/*        </tr>*/}
+            {/*    </table>*/}
+            {/*    <table className="book-page--content__table">*/}
+            {/*        <tr>*/}
+            {/*            <td className="book-page--content__td-title">Жанр</td>*/}
+            {/*            <td className="book-page--content__td-text">{props.genre}</td>*/}
+            {/*        </tr>*/}
+            {/*        <tr>*/}
+            {/*            <td className="book-page--content__td-title">Вес</td>*/}
+            {/*            <td className="book-page--content__td-text">{props.weight}</td>*/}
+            {/*        </tr>*/}
+            {/*    </table>*/}
+            {/*</div>*/}
+
+
+
             <BookPageHeader category={book.category} title={book.title}/>
             <BookCover/>
-            <BookTitle title={props.title}/>
-            <BookAuthor author={props.author}/>
+            <BookTitle title={book.title}/>
+            <BookAuthor author={book.author}/>
             <BookButton/>
             <BookTitle title={'About'}/>
-            <BookPageText title={props.description}/>
+            <BookPageText title={book.description}/>
             <BookTitle title={'Rating'}/>
-            <BookRating rating={props.rating}/>
+            <BookRating rating={book.rating}/>
             <BookTitle title={'Detailed information'}/>
             <div className="book-page--content__info">
                 <table className="book-page--content__table">
                     <tr>
                         <td className="book-page--content__td-title">Издательство</td>
-                        <td className="book-page--content__td-text">{props.manufacturer}</td>
+                        <td className="book-page--content__td-text">{book.manufacturer}</td>
                     </tr>
                     <tr>
                         <td className="book-page--content__td-title">Год издания</td>
-                        <td className="book-page--content__td-text">{props.year}</td>
+                        <td className="book-page--content__td-text">{book.year}</td>
                     </tr>
                     <tr>
                         <td className="book-page--content__td-title">Страниц</td>
-                        <td className="book-page--content__td-text">{props.pages}</td>
+                        <td className="book-page--content__td-text">{book.pages}</td>
                     </tr>
                     <tr>
                         <td className="book-page--content__td-title">Переплёт</td>
-                        <td className="book-page--content__td-text">{props.binding}</td>
+                        <td className="book-page--content__td-text">{book.binding}</td>
                     </tr>
                     <tr>
                         <td className="book-page--content__td-title">Формат</td>
-                        <td className="book-page--content__td-text">{props.format}</td>
+                        <td className="book-page--content__td-text">{book.format}</td>
                     </tr>
                 </table>
                 <table className="book-page--content__table">
                     <tr>
                         <td className="book-page--content__td-title">Жанр</td>
-                        <td className="book-page--content__td-text">{props.genre}</td>
+                        <td className="book-page--content__td-text">{book.genre}</td>
                     </tr>
                     <tr>
                         <td className="book-page--content__td-title">Вес</td>
-                        <td className="book-page--content__td-text">{props.weight}</td>
+                        <td className="book-page--content__td-text">{book.weight}</td>
                     </tr>
                 </table>
             </div>
+
+
+
         </div>
     );
 };

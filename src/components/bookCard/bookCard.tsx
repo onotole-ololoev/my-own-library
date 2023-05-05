@@ -9,7 +9,7 @@ import {NavLink} from "react-router-dom";
 
 
 import './styles.scss'
-import {BookType, libraryAPI} from "../../api/library-api";
+
 
 type BookCardType = {
     view: string
@@ -29,18 +29,14 @@ export const BookCard = (props: BookCardType) => {
 
 
     return (
-
-        <div>
-            <NavLink to={`/book/:${props.id}`} className={classNames}>
-                <BookCover cover={props.cover}/>
-                <div className={'book-info'}>
-                    <BookRating/>
-                    <BookTitle title={props.title}/>
-                    <BookAuthor author={props.author}/>
-                    <BookButton/>
-                </div>
-            </NavLink>
-        </div>
-
+        <NavLink to={`/book/${props.id}`} className={classNames}>
+            <BookCover cover={props.cover}/>
+            <div className={'book-info'}>
+                <BookRating/>
+                <BookTitle title={props.title}/>
+                <BookAuthor author={props.author}/>
+                <BookButton/>
+            </div>
+        </NavLink>
     );
 };

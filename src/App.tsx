@@ -15,6 +15,7 @@ import {BookPage} from "./pages/bookPage/bookPage";
 
 
 import "./app.scss"
+import {HumorPage} from "./pages/humorBooks/humorBooks";
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
         fetchData();
     }, [books]);
 
+
     return (
         <div className="wrapper">
             <Header/>
@@ -64,39 +66,49 @@ function App() {
                     <Toolbar view={view} onChangeView={setView}/>
                     <Routes>
                         <Route path='/' element={<MainPage books={books} view={view}/>}/>
+                        <Route path='/humor' element={<HumorPage books={books} view={view}/>}/>
                         <Route path='/rules' element={<RulesPage/>}/>
                         <Route path='/contract' element={<ContractPage/>}/>
                         <Route path='/logout' element={<div>logout</div>}/>
                         <Route path='/profile' element={<div>profile</div>}/>
                         <Route path='/admin' element={<AdminPage/>}/>
+                        {/*<Route path={`/book/:id`} element={<BookPage />} />*/}
+                        {books.map(el => ( <Route path={`/book/${el.id}`} element={<BookPage id={el.id} title={el.title} author={el.author} category={el.category} />} />))}
 
-                        {books.map(el => {
-
-                            return (
-                                <Route path={`/book/:${el.id}`}
-                                       element={<BookPage key={el.id} id={el.id} category={el.category} author={el.author}
-                                                          title={el.title} description={el.description}
-                                                          format={el.format} cover={el.cover} rating={el.rating}
-                                                          binding={el.binding} genre={el.genre} bookedFor={el.bookedFor}
-                                                          isBooked={el.isBooked} isAvailable={el.isAvailable}
-                                                          publishingHouse={el.publishingHouse}
-                                                          manufacturer={el.manufacturer} pages={el.pages}
-                                                          weight={el.weight} year={el.year}/>}/>
-                            )
-                        })}
-                    </Routes>
-                </div>
-            </div>
-            <Footer/>
-
-            {/*<BookCard view={view}/>*/}
-            {/*<BookCard view={view}/>*/}
-            {/*<BookCard view={view}/>*/}
-            {/*<BookCard view={view}/>*/}
+                                {/*<Route path={`/book/:id`} element={<BookPage />} />*/}
 
 
-        </div>
-    );
-}
+                                {/*{books.map(el => {*/}
+                                {/*    return (*/}
+                                {/*        <Route path={`/book/:id`}*/}
+                                {/*               element={<BookPage key={el.id} id={el.id} category={el.category} author={el.author}*/}
+                                {/*                                  title={el.title} description={el.description}*/}
+                                {/*                                  format={el.format} cover={el.cover} rating={el.rating}*/}
+                                {/*                                  binding={el.binding} genre={el.genre} bookedFor={el.bookedFor}*/}
+                                {/*                                  isBooked={el.isBooked} isAvailable={el.isAvailable}*/}
+                                {/*                                  publishingHouse={el.publishingHouse}*/}
+                                {/*                                  manufacturer={el.manufacturer} pages={el.pages}*/}
+                                {/*                                  weight={el.weight} year={el.year}/>}/>*/}
+                                {/*    )*/}
+                                {/*})}*/}
+                            </Routes>
+                        </div>
+                        </div>
+                            <Footer/>
 
-export default App;
+                            {/*<BookCard view={view}/>*/
+                            }
+                            {/*<BookCard view={view}/>*/
+                            }
+                            {/*<BookCard view={view}/>*/
+                            }
+                            {/*<BookCard view={view}/>*/
+                            }
+
+
+                        </div>
+                        )
+                            ;
+                        }
+
+                            export default App;

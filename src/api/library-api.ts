@@ -4,6 +4,9 @@ export const libraryAPI = {
     getAllBooks() {
         return instance.get<ResponseBooksType>(`/api/books`)
     },
+    getCategoryBooks(category: string) {
+        return instance.get<ResponseBooksType>(`/api/books`, {params: category})
+    },
     getBook(id: string) {
         return instance.get<BookType>(`/api/book/${id}`)
     },
