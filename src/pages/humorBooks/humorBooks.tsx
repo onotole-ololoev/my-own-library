@@ -20,7 +20,7 @@ export const HumorBooks = (props: HumorBooksType) => {
             setBooks(result.data.books);
         };
         fetchData();
-    }, [books]);
+    }, []);
 
 
     return (

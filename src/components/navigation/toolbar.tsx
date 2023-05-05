@@ -8,6 +8,7 @@ import './styles.scss'
 type ToolbarType = {
     view: string
     onChangeView: (el: string) => void
+    searchBook: (el: string) => void
 }
 
 export const Toolbar = (props: ToolbarType) => {
@@ -19,7 +20,7 @@ export const Toolbar = (props: ToolbarType) => {
     return (
         <div className='navigation'>
 
-            <SearchButton isInputAvailable={isInputAvailable} setIsInputAvailable={setIsInputAvailable}/>
+            <SearchButton isInputAvailable={isInputAvailable} setIsInputAvailable={setIsInputAvailable} searchBook={props.searchBook}/>
             {isInputAvailable === false
                 ?
                 <>

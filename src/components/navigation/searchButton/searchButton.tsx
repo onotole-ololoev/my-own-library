@@ -10,9 +10,10 @@ import {useResponsive} from "../../hooks/useResponsive";
 type SearchButtonType = {
     setIsInputAvailable: (value: boolean) => void
     isInputAvailable: boolean
+    searchBook: (el: string) => void
 }
 
-export const SearchButton: React.FC<SearchButtonType> = ({setIsInputAvailable, isInputAvailable}) => {
+export const SearchButton: React.FC<SearchButtonType> = ({setIsInputAvailable, isInputAvailable, searchBook}) => {
 
         const setInputView = () => {
             setIsInputAvailable(!isInputAvailable)
@@ -28,13 +29,13 @@ export const SearchButton: React.FC<SearchButtonType> = ({setIsInputAvailable, i
                         ?
                         <Button shape="circle" icon={<SearchOutlined/>} onClick={setInputView}/>
                         :
-                        <InputField />
+                        <InputField searchBook={searchBook}/>
                     }
                 </>
                 :
                 <>
                     <Button shape="circle" icon={<CloseOutlined/>} onClick={setInputView} className={'close-btn'}/>
-                    <InputField/>
+                    <InputField searchBook={searchBook}/>
                 </>
 
         )

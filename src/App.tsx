@@ -54,7 +54,15 @@ function App() {
             setBooks(result.data.books);
         };
         fetchData();
-    }, [books]);
+    }, []);
+
+    const searchBook = (titleToFind: string) => {
+        let searchBookArr = books.filter(book => {
+            return book.title.includes(titleToFind)
+        })
+
+        setBooks(searchBookArr)
+    }
 
 
     return (
@@ -63,7 +71,7 @@ function App() {
             <div className={'inner'}>
                 {isMobile || isTablet ? null : <Navbar/>}
                 <div className={'wrapper__page'}>
-                    <Toolbar view={view} onChangeView={setView}/>
+                    <Toolbar view={view} onChangeView={setView} searchBook={searchBook}/>
                     <Routes>
                         <Route path='/' element={<MainPage books={books} view={view}/>}/>
                         <Route path='/humor' element={<HumorBooks view={view}/>}/>
@@ -73,42 +81,44 @@ function App() {
                         <Route path='/profile' element={<div>profile</div>}/>
                         <Route path='/admin' element={<AdminPage/>}/>
                         {/*<Route path={`/book/:id`} element={<BookPage />} />*/}
-                        {books.map(el => ( <Route path={`/book/${el.id}`} element={<BookPage id={el.id} title={el.title} author={el.author} category={el.category} />} />))}
+                        {books.map(el => (<Route path={`/book/${el.id}`}
+                                                 element={<BookPage id={el.id} title={el.title} author={el.author}
+                                                                    category={el.category}/>}/>))}
 
-                                {/*<Route path={`/book/:id`} element={<BookPage />} />*/}
-
-
-                                {/*{books.map(el => {*/}
-                                {/*    return (*/}
-                                {/*        <Route path={`/book/:id`}*/}
-                                {/*               element={<BookPage key={el.id} id={el.id} category={el.category} author={el.author}*/}
-                                {/*                                  title={el.title} description={el.description}*/}
-                                {/*                                  format={el.format} cover={el.cover} rating={el.rating}*/}
-                                {/*                                  binding={el.binding} genre={el.genre} bookedFor={el.bookedFor}*/}
-                                {/*                                  isBooked={el.isBooked} isAvailable={el.isAvailable}*/}
-                                {/*                                  publishingHouse={el.publishingHouse}*/}
-                                {/*                                  manufacturer={el.manufacturer} pages={el.pages}*/}
-                                {/*                                  weight={el.weight} year={el.year}/>}/>*/}
-                                {/*    )*/}
-                                {/*})}*/}
-                            </Routes>
-                        </div>
-                        </div>
-                            <Footer/>
-
-                            {/*<BookCard view={view}/>*/
-                            }
-                            {/*<BookCard view={view}/>*/
-                            }
-                            {/*<BookCard view={view}/>*/
-                            }
-                            {/*<BookCard view={view}/>*/
-                            }
+                        {/*<Route path={`/book/:id`} element={<BookPage />} />*/}
 
 
-                        </div>
-                        )
-                            ;
-                        }
+                        {/*{books.map(el => {*/}
+                        {/*    return (*/}
+                        {/*        <Route path={`/book/:id`}*/}
+                        {/*               element={<BookPage key={el.id} id={el.id} category={el.category} author={el.author}*/}
+                        {/*                                  title={el.title} description={el.description}*/}
+                        {/*                                  format={el.format} cover={el.cover} rating={el.rating}*/}
+                        {/*                                  binding={el.binding} genre={el.genre} bookedFor={el.bookedFor}*/}
+                        {/*                                  isBooked={el.isBooked} isAvailable={el.isAvailable}*/}
+                        {/*                                  publishingHouse={el.publishingHouse}*/}
+                        {/*                                  manufacturer={el.manufacturer} pages={el.pages}*/}
+                        {/*                                  weight={el.weight} year={el.year}/>}/>*/}
+                        {/*    )*/}
+                        {/*})}*/}
+                    </Routes>
+                </div>
+            </div>
+            <Footer/>
 
-                            export default App;
+            {/*<BookCard view={view}/>*/
+            }
+            {/*<BookCard view={view}/>*/
+            }
+            {/*<BookCard view={view}/>*/
+            }
+            {/*<BookCard view={view}/>*/
+            }
+
+
+        </div>
+    )
+        ;
+}
+
+export default App;
