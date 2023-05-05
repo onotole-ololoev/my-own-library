@@ -2,9 +2,10 @@
   padding: 15px 0 0 10px;
   font-weight: normal;
   &__link {
+    display: block;
     color: #363636;
     font-size: 16px;
-    padding: 5px 5px 0;
+    padding: 5px 5px 5px 0;
   }
   &__count {
     padding-left: 10px;
