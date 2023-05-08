@@ -44,8 +44,6 @@ export const BookPage = () => {
             bookedFor: ''
     })
 
-
-    // const hardId = '644b83fe4238ab0034f9e225'
     const fetchData = async () => {
       if (id) {
           const result = await libraryAPI.getBook(id)
@@ -59,54 +57,7 @@ export const BookPage = () => {
 
 
     return (
-        <div>
-            {/*<BookPageHeader category={props.book} title={props.title}/>*/}
-            {/*<BookCover/>*/}
-            {/*<BookTitle title={props.title}/>*/}
-            {/*<BookAuthor author={props.author}/>*/}
-            {/*<BookButton/>*/}
-            {/*<BookTitle title={'About'}/>*/}
-            {/*<BookPageText title={props.description}/>*/}
-            {/*<BookTitle title={'Rating'}/>*/}
-            {/*<BookRating rating={props.rating}/>*/}
-            {/*<BookTitle title={'Detailed information'}/>*/}
-            {/*<div className="book-page--content__info">*/}
-            {/*    <table className="book-page--content__table">*/}
-            {/*        <tr>*/}
-            {/*            <td className="book-page--content__td-title">Издательство</td>*/}
-            {/*            <td className="book-page--content__td-text">{props.manufacturer}</td>*/}
-            {/*        </tr>*/}
-            {/*        <tr>*/}
-            {/*            <td className="book-page--content__td-title">Год издания</td>*/}
-            {/*            <td className="book-page--content__td-text">{props.year}</td>*/}
-            {/*        </tr>*/}
-            {/*        <tr>*/}
-            {/*            <td className="book-page--content__td-title">Страниц</td>*/}
-            {/*            <td className="book-page--content__td-text">{props.pages}</td>*/}
-            {/*        </tr>*/}
-            {/*        <tr>*/}
-            {/*            <td className="book-page--content__td-title">Переплёт</td>*/}
-            {/*            <td className="book-page--content__td-text">{props.binding}</td>*/}
-            {/*        </tr>*/}
-            {/*        <tr>*/}
-            {/*            <td className="book-page--content__td-title">Формат</td>*/}
-            {/*            <td className="book-page--content__td-text">{props.format}</td>*/}
-            {/*        </tr>*/}
-            {/*    </table>*/}
-            {/*    <table className="book-page--content__table">*/}
-            {/*        <tr>*/}
-            {/*            <td className="book-page--content__td-title">Жанр</td>*/}
-            {/*            <td className="book-page--content__td-text">{props.genre}</td>*/}
-            {/*        </tr>*/}
-            {/*        <tr>*/}
-            {/*            <td className="book-page--content__td-title">Вес</td>*/}
-            {/*            <td className="book-page--content__td-text">{props.weight}</td>*/}
-            {/*        </tr>*/}
-            {/*    </table>*/}
-            {/*</div>*/}
-
-
-
+        <div className={'book-page'}>
             <BookPageHeader category={book.category} title={book.title}/>
             <BookCover/>
             <BookTitle title={book.title}/>

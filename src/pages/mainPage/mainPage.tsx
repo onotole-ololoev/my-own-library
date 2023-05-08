@@ -1,20 +1,31 @@
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 
 import {BookCard} from "../../components/bookCard/bookCard";
+import {BookType, libraryAPI} from "../../api/library-api";
 
 import './styles.scss'
-import {BookType} from "../../api/library-api";
+
 
 
 type MainPageType = {
     view: string
-    books: BookType[]
 }
 
 export const MainPage = (props: MainPageType) => {
+
+    const [books, setBooks] = useState<BookType[]>([])
+    const fetchData = useCallback(async () => {
+        const result = await libraryAPI.getAllBooks()
+        setBooks(result.data.books);
+    }, [])
+
+    useEffect(() => {
+        void fetchData();
+    }, []);
+
     return (
         <div className={'books-page'}>
-            {props.books.map((el, i) => {
+            {books.map((el, i) => {
                 return (
                     <BookCard key={i} id={el.id} rating={el.rating} title={el.title} author={el.author} view={props.view} cover={el.cover}/>
                 )

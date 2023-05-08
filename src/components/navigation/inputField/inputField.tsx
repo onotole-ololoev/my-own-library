@@ -7,7 +7,7 @@ import './styles.scss'
 const {Search} = Input;
 
 type InputFieldType = {
-    searchBook: (el: string) => void
+    // searchBook: (el: string) => void
 }
 
 
@@ -17,7 +17,7 @@ export const InputField = (props: InputFieldType) => {
     const titleQuery = searchParams.get('title') || '';
 
     const onSearch = (value: string) => {
-        props.searchBook(value)
+        // props.searchBook(value)
         // console.log(value)
         // setSearchParams({title: value})
     };
