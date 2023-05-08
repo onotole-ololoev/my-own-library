@@ -20,7 +20,7 @@ function App() {
 
 
     const {isMobile, isTablet, isDesktop} = useResponsive()
-    const [view, setView] = useState('tile');
+    // const [view, setView] = useState('tile');
 
 
     return (
@@ -29,9 +29,9 @@ function App() {
             <div className={'inner'}>
                 {isMobile || isTablet ? null : <Navbar/>}
                 <div className={'wrapper__page'}>
-                    <Toolbar view={view} onChangeView={setView} />
+                    {/*<Toolbar view={view} onChangeView={setView} />*/}
                     <Routes>
-                        <Route path='/' element={<MainPage view={view}/>}/>
+                        <Route path='/' element={<MainPage />}/>
                         <Route path='/rules' element={<RulesPage/>}/>
                         <Route path='/contract' element={<ContractPage/>}/>
                         <Route path='/profile' element={<div>profile</div>}/>
