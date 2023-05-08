@@ -22,8 +22,6 @@ export const BookPage = () => {
 
     const {id} = useParams();
 
-    console.log(id)
-
     const [book, setBook] = useState<BookType>({
             id: '',
             category: '',

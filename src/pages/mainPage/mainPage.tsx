@@ -1,11 +1,13 @@
 import React, {useCallback, useEffect, useState} from 'react';
 
 import {BookCard} from "../../components/bookCard/bookCard";
-import {BookType, libraryAPI} from "../../api/library-api";
 import {Toolbar} from "../../components/navigation/toolbar";
+import {useParams} from "react-router-dom";
 
+import {BookType, libraryAPI} from "../../api/library-api";
 
 import './styles.scss'
+
 
 
 
@@ -17,12 +19,21 @@ type MainPageType = {
 export const MainPage = (props: MainPageType) => {
 
     const [books, setBooks] = useState<BookType[]>([])
+    const [view, setView] = useState('tile');
+
+    const {category} = useParams();
+
+
     const fetchData = useCallback(async () => {
+        if (category) {
+            const result = await libraryAPI.getCategoryBooks(category)
+            setBooks(result.data.books);
+        }
         const result = await libraryAPI.getAllBooks()
         setBooks(result.data.books);
     }, [])
 
-    const [view, setView] = useState('tile');
+
 
     useEffect(() => {
         void fetchData();

@@ -27,8 +27,6 @@ export const BookCard = (props: BookCardType) => {
         [`book-wrapper__list`]: props.view === 'list'
     })
 
-    console.log(props);
-
     return (
         <NavLink to={`/book/${props?.id}`} className={classNames}>
             <BookCover cover={props.cover}/>
