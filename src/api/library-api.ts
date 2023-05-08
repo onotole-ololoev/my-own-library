@@ -15,7 +15,8 @@ export const libraryAPI = {
     }
 }
 export type BookType =  {
-    id: string
+    _id?: string
+    id?: string
     title: string
     author: string
     category: string

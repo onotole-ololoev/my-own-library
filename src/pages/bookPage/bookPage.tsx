@@ -9,43 +9,22 @@ import {BookButton} from "../../components/bookCard/bookButton/bookButton";
 import {BookPageText} from "./bookPageText/bookPageText";
 import {BookRating} from "../../components/bookCard/bookRating/bookRating";
 
-import {libraryAPI} from "../../api/library-api";
+import {BookType, libraryAPI} from "../../api/library-api";
 
 import './styles.scss'
 
 
 
 
-type BookPageType = {
-    id: string
-    title: string
-    author: string
-    category: string
-    rating?: number
-    year?: string
-    publishingHouse?: string
-    pages?: string
-    binding?: string
-    format?: string
-    genre?: string
-    weight?: string
-    description?: string
-    manufacturer?: string
-    bookedFor?: string
-    isAvailable?: boolean
-    isBooked?: boolean
-    reviews?: [string]
-    cover?: [string]
-}
+
+export const BookPage = () => {
 
 
+    const {id} = useParams();
 
-export const BookPage = (props: BookPageType) => {
+    console.log(id)
 
-
-
-
-    const [book, setBook] = useState<BookPageType>({
+    const [book, setBook] = useState<BookType>({
             id: '',
             category: '',
             cover: [''],
@@ -67,13 +46,15 @@ export const BookPage = (props: BookPageType) => {
 
 
     // const hardId = '644b83fe4238ab0034f9e225'
+    const fetchData = async () => {
+      if (id) {
+          const result = await libraryAPI.getBook(id)
+          setBook(result.data);
+      }
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            const result = await libraryAPI.getBook(props.id)
-            setBook(result.data);
-        };
-        fetchData();
+        void fetchData();
     }, []);
 
 

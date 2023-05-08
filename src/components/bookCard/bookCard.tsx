@@ -17,7 +17,7 @@ type BookCardType = {
     rating?: number
     author: string
     title: string
-    id: string
+    id?: string
 }
 
 export const BookCard = (props: BookCardType) => {
@@ -27,9 +27,10 @@ export const BookCard = (props: BookCardType) => {
         [`book-wrapper__list`]: props.view === 'list'
     })
 
+    console.log(props);
 
     return (
-        <NavLink to={`/book/${props.id}`} className={classNames}>
+        <NavLink to={`/book/${props?.id}`} className={classNames}>
             <BookCover cover={props.cover}/>
             <div className={'book-info'}>
                 <BookRating/>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Routes, Route} from 'react-router-dom'
 
 import {Header} from "./components/header/header";
@@ -15,7 +15,7 @@ import {BookPage} from "./pages/bookPage/bookPage";
 
 
 import "./app.scss"
-import {HumorBooks} from "./pages/humorBooks/humorBooks";
+// import {HumorBooks} from "./pages/humorBooks/humorBooks";
 
 function App() {
 
@@ -47,13 +47,19 @@ function App() {
     const {isMobile, isTablet, isDesktop} = useResponsive()
     const [view, setView] = useState('tile');
 
-    useEffect(() => {
+    const fetchData = useCallback(async () => {
+        const result = await libraryAPI.getAllBooks()
+        const data = result.data.books.map((el: BookType) => {
+            return {
+                ...el,
+                id: el['_id']
+            }
+        })
+        setBooks(data);
+    }, [])
 
-        const fetchData = async () => {
-            const result = await libraryAPI.getAllBooks()
-            setBooks(result.data.books);
-        };
-        fetchData();
+    useEffect(() => {
+       void fetchData();
     }, []);
 
     const searchBook = (titleToFind: string) => {
@@ -74,16 +80,16 @@ function App() {
                     <Toolbar view={view} onChangeView={setView} searchBook={searchBook}/>
                     <Routes>
                         <Route path='/' element={<MainPage books={books} view={view}/>}/>
-                        <Route path='/humor' element={<HumorBooks view={view}/>}/>
+                        {/*<Route path='/humor' element={<HumorBooks view={view}/>}/>*/}
                         <Route path='/rules' element={<RulesPage/>}/>
                         <Route path='/contract' element={<ContractPage/>}/>
                         <Route path='/logout' element={<div>logout</div>}/>
                         <Route path='/profile' element={<div>profile</div>}/>
                         <Route path='/admin' element={<AdminPage/>}/>
-                        {/*<Route path={`/book/:id`} element={<BookPage />} />*/}
-                        {books.map(el => (<Route path={`/book/${el.id}`}
-                                                 element={<BookPage id={el.id} title={el.title} author={el.author}
-                                                                    category={el.category}/>}/>))}
+                        <Route path={`/book/:id`} element={<BookPage />} />
+                        {/*{books.map(el => (<Route path={`/book/${el.id}`}*/}
+                        {/*                         element={<BookPage id={el.id} title={el.title} author={el.author}*/}
+                        {/*                                            category={el.category}/>}/>))}*/}
 
                         {/*<Route path={`/book/:id`} element={<BookPage />} />*/}
 
