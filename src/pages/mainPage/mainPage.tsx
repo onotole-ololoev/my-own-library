@@ -24,26 +24,29 @@ export const MainPage = (props: MainPageType) => {
     const {category} = useParams();
 
 
-    const fetchData = useCallback(async () => {
+
+    const fetchData = async () => {
         if (category) {
             const result = await libraryAPI.getCategoryBooks(category)
             setBooks(result.data.books);
+
+        } else {
+            const result = await libraryAPI.getAllBooks()
+            setBooks(result.data.books);
         }
-        const result = await libraryAPI.getAllBooks()
-        setBooks(result.data.books);
-    }, [])
-
-
+    }
 
     useEffect(() => {
         void fetchData();
-    }, []);
+    }, [category]);
+
 
 
     return (
         <div className={'books-page'}>
             <Toolbar view={view} onChangeView={setView} />
             <div className={'books-page__content'}>
+                {books.length < 1 ? <div>Sorry, this category is empty. Please, choose another one.</div> : null}
                 {books.map((el, i) => {
                     return (
                         <BookCard key={i} id={el.id} rating={el.rating} title={el.title} author={el.author} view={view} cover={el.cover}/>

@@ -8,14 +8,14 @@ import './styles.scss'
 
 
 type BooksCategoryListType = {
-    onCloseModal?: () => void
+    onClose?: () => void
 }
 
 type BooksCategoryItemType = {
     title: string
     count: number
     path: string
-    onCloseModal?: () => void
+    onClose?: () => void
 }
 
 const navigationBooksCategories = [
@@ -91,14 +91,16 @@ const navigationBooksCategories = [
     }
 ]
 
-const BooksCategoryItem = (props: any) => {
+const BooksCategoryItem = (props: BooksCategoryItemType) => {
 
     const navigate = useNavigate();
 
     const handleClick = (e: SyntheticEvent) => {
         e.preventDefault()
         navigate(props.path)
-        props.onCloseModal()
+        if (props.onClose) {
+            props.onClose()
+        }
     }
 
     return (
@@ -116,7 +118,7 @@ export const BooksCategoryList = (props: BooksCategoryListType) => {
     return (
         <ul className={"category-list"}>
             {navigationBooksCategories.map( (item, index) => {
-                return <BooksCategoryItem key={index} title={item.title} count={item.count} path={item.path} onCloseModal={props.onCloseModal}/>
+                return <BooksCategoryItem key={index} title={item.title} count={item.count} path={item.path} onClose={props.onClose}/>
             })}
         </ul>
     );

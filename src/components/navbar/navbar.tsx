@@ -16,7 +16,7 @@ export const Navbar = (props: NavbarType) => {
         <ul className={'navbar'}>
             <li className={'navbar-item'}>
                 <Collapsible title={'Витрина книг'}>
-                    <BooksCategoryList onCloseModal={props.onClose}/>
+                    <BooksCategoryList onClose={props.onClose}/>
                 </Collapsible>
             </li>
             <li className={'navbar-item'}>
