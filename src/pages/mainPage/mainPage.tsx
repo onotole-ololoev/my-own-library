@@ -9,12 +9,7 @@ import {BookType, libraryAPI} from "../../api/library-api";
 import './styles.scss'
 
 
-
-
-
-type MainPageType = {
-
-}
+type MainPageType = {}
 
 export const MainPage = (props: MainPageType) => {
 
@@ -22,7 +17,6 @@ export const MainPage = (props: MainPageType) => {
     const [view, setView] = useState('tile');
 
     const {category} = useParams();
-
 
 
     const fetchData = async () => {
@@ -40,16 +34,24 @@ export const MainPage = (props: MainPageType) => {
         void fetchData();
     }, [category]);
 
+    const sortByRating = (title: string) => {
+        return ((a: any, b: any) => a[title] > b[title] ? 1 : -1)
+    }
 
+    const onHandleSort = () => {
+        let result = books.sort(sortByRating('rating'));
+        setBooks(result)
+    }
 
     return (
         <div className={'books-page'}>
-            <Toolbar view={view} onChangeView={setView} />
+            <Toolbar view={view} onChangeView={setView} onHandleSort={onHandleSort}/>
             <div className={'books-page__content'}>
                 {books.length < 1 ? <div>Sorry, this category is empty. Please, choose another one.</div> : null}
                 {books.map((el, i) => {
                     return (
-                        <BookCard key={i} id={el.id} rating={el.rating} title={el.title} author={el.author} view={view} cover={el.cover}/>
+                        <BookCard key={i} id={el.id} rating={el.rating} title={el.title} author={el.author} view={view}
+                                  cover={el.cover}/>
                     )
                 })}
             </div>

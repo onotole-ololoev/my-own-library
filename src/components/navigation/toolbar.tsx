@@ -8,6 +8,7 @@ import './styles.scss'
 type ToolbarType = {
     view: string
     onChangeView: (el: string) => void
+    onHandleSort: () => void
     // searchBook: (el: string) => void
 }
 
@@ -24,7 +25,7 @@ export const Toolbar = (props: ToolbarType) => {
             {isInputAvailable === false
                 ?
                 <>
-                    <SortButton />
+                    <SortButton onHandleSort={props.onHandleSort}/>
                     <ViewChangeRadio view={props.view} onChangeView={props.onChangeView}/>
                 </>
                 :

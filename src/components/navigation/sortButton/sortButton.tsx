@@ -5,13 +5,18 @@ import {useResponsive} from "../../hooks/useResponsive";
 
 import './styles.scss'
 
-export const SortButton: React.FC = () => {
+
+type SortButtonType = {
+    onHandleSort: () => void
+}
+
+export const SortButton = (props: SortButtonType) => {
 
     const {isMobile, isTablet, isDesktop} = useResponsive()
 
     return (
         <>
-            {isMobile || isTablet ? <Button shape="circle" icon={<SortAscendingOutlined/>}/> : <Button className={'sort-btn'} shape="circle" icon={<SortAscendingOutlined/>}>Sort by rating</Button>}
+            {isMobile || isTablet ? <Button shape="circle" icon={<SortAscendingOutlined/>} onClick={props.onHandleSort}/> : <Button className={'sort-btn'} shape="circle" icon={<SortAscendingOutlined/>} onClick={props.onHandleSort}>Sort by rating</Button>}
         </>
         // <Button shape="circle" icon={<SortAscendingOutlined/>}/>
     );
