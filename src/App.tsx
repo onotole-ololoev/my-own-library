@@ -2,7 +2,6 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {Routes, Route} from 'react-router-dom'
 
 import {Header} from "./components/header/header";
-import {Toolbar} from "./components/navigation/toolbar";
 import {MainPage} from "./pages/mainPage/mainPage";
 import {RulesPage} from "./pages/rulesPage/rulesPage";
 import {ContractPage} from "./pages/contractPage/contractPage";

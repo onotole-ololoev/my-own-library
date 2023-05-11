@@ -7,7 +7,6 @@ import {useParams} from "react-router-dom";
 import {BookType, libraryAPI} from "../../api/library-api";
 
 import './styles.scss'
-import {log} from "util";
 
 
 type MainPageType = {}
@@ -43,12 +42,8 @@ export const MainPage = (props: MainPageType) => {
         void fetchData();
     }, [category]);
 
-    // const sortByRating = () => {
-    //     return ((a: any, b: any) => a.title - b.title)
-    // }
 
     const onHandleSort = () => {
-        // let result = books.sort(sortByRating('rating'));
         setBooks(books.sort((a: any, b: any) => {
                     return a.title - b.title
                 }
