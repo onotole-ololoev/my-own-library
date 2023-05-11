@@ -7,6 +7,7 @@ import {useParams} from "react-router-dom";
 import {BookType, libraryAPI} from "../../api/library-api";
 
 import './styles.scss'
+import {log} from "util";
 
 
 type MainPageType = {}
@@ -20,27 +21,41 @@ export const MainPage = (props: MainPageType) => {
 
 
     const fetchData = async () => {
-        if (category) {
-            const result = await libraryAPI.getCategoryBooks(category)
-            setBooks(result.data.books);
+        try {
+            if (category) {
+                const result = await libraryAPI.getCategoryBooks(category)
+                setBooks(result.data.books);
+                console.log('books with category=' + category + ' request')
+                console.log(result.data.books)
 
-        } else {
-            const result = await libraryAPI.getAllBooks()
-            setBooks(result.data.books);
+            } else {
+                const result = await libraryAPI.getAllBooks()
+                setBooks(result.data.books);
+                console.log('all books request', result.data)
+            }
+        } catch (e: any) {
+            console.log(e.message)
         }
+
     }
 
     useEffect(() => {
         void fetchData();
     }, [category]);
 
-    const sortByRating = (title: string) => {
-        return ((a: any, b: any) => a[title] > b[title] ? 1 : -1)
-    }
+    // const sortByRating = () => {
+    //     return ((a: any, b: any) => a.title - b.title)
+    // }
 
     const onHandleSort = () => {
-        let result = books.sort(sortByRating('rating'));
-        setBooks(result)
+        // let result = books.sort(sortByRating('rating'));
+        setBooks(books.sort((a: any, b: any) => {
+                    return a.title - b.title
+                }
+            )
+        )
+        console.log('sort click')
+
     }
 
     return (
