@@ -43,14 +43,21 @@ export const MainPage = (props: MainPageType) => {
     }, [category]);
 
 
-    const onHandleSort = () => {
-        setBooks(books.sort((a: any, b: any) => {
-                    return a.title - b.title
-                }
-            )
-        )
-        console.log('sort click')
+    // const sortBooksTitle = (books: BookType[]) => {
+    //     return books.sort(function (a:any, b:any){
+    //         if(a.title < b.title) { return -1; }
+    //         if(a.title > b.title) { return 1; }
+    //         return 0;
+    //     })
+    // }
 
+    const onHandleSort = () => {
+        setBooks(books.sort(function (a:any, b:any){
+            if(a.title < b.title) { return -1; }
+            if(a.title > b.title) { return 1; }
+            return 0;
+        }))
+        console.log('sort click')
     }
 
     return (
@@ -65,7 +72,6 @@ export const MainPage = (props: MainPageType) => {
                     )
                 })}
             </div>
-
         </div>
     );
 };
