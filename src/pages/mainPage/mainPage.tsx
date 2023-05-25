@@ -55,6 +55,15 @@ export const MainPage = (props: MainPageType) => {
     //     })
     // }
 
+    let nonSortArr = [
+        {id: 1, title: 'БАвария'},
+        {id: 2, title: 'Жопа'},
+        {id: 3, title: 'Зеленый'},
+        {id: 4, title: 'Что ты?'},
+        {id: 5, title: 'Дело'},
+        {id: 6, title: 'Авария'},
+
+    ]
     const onHandleSort = () => {
         let sortBooks = books.sort(function (a: any, b: any) {
             if (a.title < b.title) {
@@ -70,6 +79,7 @@ export const MainPage = (props: MainPageType) => {
     }
 
     console.log('main page render')
+    console.log(books.map(el => el.title) + ' sort books ' + books.sort((a, b) => a.title > b.title ? 1 : -1).map(el => el.title))
 
     return (
         <div className={'books-page'}>
@@ -84,6 +94,13 @@ export const MainPage = (props: MainPageType) => {
                     )
                 })}
             </div>
+
+            <div> исходный массив</div>
+            {nonSortArr.map(el => el.title)}
+            <div>отсортированный массив</div>
+            {nonSortArr.sort((a, b) => a.title > b.title ? 1 : -1).map(el => el.title)}
+
+
         </div>
     );
 };
