@@ -7,6 +7,7 @@ import {useParams} from "react-router-dom";
 import {BookType, libraryAPI} from "../../api/library-api";
 
 import './styles.scss'
+import {findAllByDisplayValue} from "@testing-library/react";
 
 
 type MainPageType = {}
@@ -34,6 +35,9 @@ export const MainPage = (props: MainPageType) => {
             }
         } catch (e: any) {
             console.log(e.message)
+            return (
+                <div>{e.message}</div>
+            )
         }
 
     }
@@ -52,20 +56,28 @@ export const MainPage = (props: MainPageType) => {
     // }
 
     const onHandleSort = () => {
-        setBooks(books.sort(function (a:any, b:any){
-            if(a.title < b.title) { return -1; }
-            if(a.title > b.title) { return 1; }
+        let sortBooks = books.sort(function (a: any, b: any) {
+            if (a.title < b.title) {
+                return -1;
+            }
+            if (a.title > b.title) {
+                return 1;
+            }
             return 0;
-        }))
+        })
+        setBooks(sortBooks)
         console.log('sort click')
     }
+
+    console.log('main page render')
 
     return (
         <div className={'books-page'}>
             <Toolbar view={view} onChangeView={setView} onHandleSort={onHandleSort}/>
             <div className={'books-page__content'}>
                 {books.length < 1 ? <div>Sorry, this category is empty. Please, choose another one.</div> : null}
-                {books.map((el, i) => {
+                {books.sort((a, b) => a.title > b.title ? 1 : -1)
+                    .map((el, i) => {
                     return (
                         <BookCard key={i} id={el.id} rating={el.rating} title={el.title} author={el.author} view={view}
                                   cover={el.cover}/>
