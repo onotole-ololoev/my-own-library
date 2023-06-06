@@ -12,6 +12,7 @@ import {BookRating} from "../../components/bookCard/bookRating/bookRating";
 import {BookType, libraryAPI} from "../../api/library-api";
 
 import './styles.scss'
+import {DeleteBookButton} from "../../components/bookCard/deleteBookButton/deleteBookButton";
 
 
 
@@ -41,6 +42,12 @@ export const BookPage = () => {
             isBooked: false,
             bookedFor: ''
     })
+
+    const onDeleteBook = () => {
+        console.log('delete this book ' + book.id)
+        // code to delete current book from the server
+
+    }
 
     const fetchData = async () => {
       if (id) {
@@ -99,10 +106,9 @@ export const BookPage = () => {
                         <td className="book-page--content__td-text">{book.weight}</td>
                     </tr>
                 </table>
+
             </div>
-
-
-
+            <DeleteBookButton onDeleteBook={onDeleteBook} />
         </div>
     );
 };
