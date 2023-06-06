@@ -12,9 +12,12 @@ export const libraryAPI = {
     },
     addNewBook({...formFields}: BookType){
         return instance.post<BookType>('/api/book/', {...formFields})
+    },
+    deleteBook(id: string) {
+        return instance.delete<BookType>(`/api/book/${id}`)
     }
-
 }
+
 export type BookType =  {
     _id?: string
     id?: string

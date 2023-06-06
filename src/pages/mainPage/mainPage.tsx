@@ -84,6 +84,9 @@ export const MainPage = (props: MainPageType) => {
         console.log('sort click')
     }
 
+    const onDeleteBook = (id: string) => {
+        console.log('DELETE!!!!')
+    }
     console.log('main page render')
     console.log(books.map(el => el.title) + ' sort books ' + books.sort((a, b) => a.title > b.title ? 1 : -1).map(el => el.title))
 
@@ -96,7 +99,7 @@ export const MainPage = (props: MainPageType) => {
                     .map((el, i) => {
                     return (
                         <BookCard key={i} id={el.id} rating={el.rating} title={el.title} author={el.author} view={view}
-                                  cover={el.cover}/>
+                                  cover={el.cover} />
                     )
                 })}
             </div>

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 import {BookPageHeader} from "./bookPageHeader/bookPageHeader";
 import {BookCover} from "../../components/bookCard/bookCover/bookCover";
@@ -8,14 +8,12 @@ import {BookAuthor} from "../../components/bookCard/bookAuthor/bookAuthor";
 import {BookButton} from "../../components/bookCard/bookButton/bookButton";
 import {BookPageText} from "./bookPageText/bookPageText";
 import {BookRating} from "../../components/bookCard/bookRating/bookRating";
-
 import {BookType, libraryAPI} from "../../api/library-api";
-
-import './styles.scss'
 import {DeleteBookButton} from "../../components/bookCard/deleteBookButton/deleteBookButton";
 
-
-
+import './styles.scss'
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
 
 
 export const BookPage = () => {
@@ -23,43 +21,59 @@ export const BookPage = () => {
 
     const {id} = useParams();
 
+    const [isDelete, setIsDelete] = useState<boolean>(false)
+
     const [book, setBook] = useState<BookType>({
-            id: '',
-            category: '',
-            cover: [''],
-            rating: 0,
-            title: '',
-            author: '',
-            year: '',
-            pages: '',
-            binding: '',
-            format: '',
-            genre: '',
-            weight: '',
-            manufacturer: '',
-            description: '',
-            isAvailable: true,
-            isBooked: false,
-            bookedFor: ''
+        id: '',
+        category: '',
+        cover: [''],
+        rating: 0,
+        title: '',
+        author: '',
+        year: '',
+        pages: '',
+        binding: '',
+        format: '',
+        genre: '',
+        weight: '',
+        manufacturer: '',
+        description: '',
+        isAvailable: true,
+        isBooked: false,
+        bookedFor: ''
     })
 
     const onDeleteBook = () => {
         console.log('delete this book ' + book.id)
-        // code to delete current book from the server
+
+        void fetchDeleteData()
 
     }
+    const fetchDeleteData = () => {
+        if (id) {
+            libraryAPI.deleteBook(id).then(() => {
+                setIsDelete(true)
+            }).catch(error)
+            {
+                console.log(error)
+            }
+        }
+    };
 
     const fetchData = async () => {
-      if (id) {
-          const result = await libraryAPI.getBook(id)
-          setBook(result.data);
-      }
+        if (id) {
+            const result = await libraryAPI.getBook(id)
+            setBook(result.data);
+        }
     };
 
     useEffect(() => {
         void fetchData();
     }, []);
 
+    if (isDelete) {
+        return <div>this book deleted</div>
+    }
 
     return (
         <div className={'book-page'}>
@@ -108,7 +122,7 @@ export const BookPage = () => {
                 </table>
 
             </div>
-            <DeleteBookButton onDeleteBook={onDeleteBook} />
+            <DeleteBookButton onDeleteBook={onDeleteBook}/>
         </div>
     );
 };

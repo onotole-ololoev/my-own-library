@@ -9,6 +9,7 @@ import {NavLink} from "react-router-dom";
 
 
 import './styles.scss'
+import {DeleteBookButton} from "./deleteBookButton/deleteBookButton";
 
 
 type BookCardType = {
@@ -26,6 +27,7 @@ export const BookCard = (props: BookCardType) => {
         [`book-wrapper__tile`]: props.view === 'tile',
         [`book-wrapper__list`]: props.view === 'list'
     })
+
 
     return (
         <NavLink to={`/book/${props?.id}`} className={classNames}>
