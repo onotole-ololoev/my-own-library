@@ -8,6 +8,7 @@ import {BookType, libraryAPI} from "../../api/library-api";
 
 import './styles.scss'
 import {findAllByDisplayValue} from "@testing-library/react";
+import {BooksPagination} from "./booksPagination/booksPagination";
 
 
 type MainPageType = {}
@@ -95,10 +96,13 @@ export const MainPage = (props: MainPageType) => {
                 })}
             </div>
 
-            <div> исходный массив</div>
-            {nonSortArr.map(el => el.title)}
-            <div>отсортированный массив</div>
-            {nonSortArr.sort((a, b) => a.title > b.title ? 1 : -1).map(el => el.title)}
+            <BooksPagination />
+
+            <div> ИСХОДНЫЙ МАССИВ</div>
+            {nonSortArr.map(el => <div>{el.title}</div>)}
+            <p>.....</p>
+            <div>ОТСОРТИРОВАННЫЙ МАССИВ</div>
+            {nonSortArr.sort((a, b) => a.title > b.title ? 1 : -1).map(el => <div>{el.title}</div>)}
 
 
         </div>
