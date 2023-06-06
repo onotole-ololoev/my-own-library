@@ -13,6 +13,7 @@ export const libraryAPI = {
     addNewBook({...formFields}: BookType){
         return instance.post<BookType>('/api/book/', {...formFields})
     }
+
 }
 export type BookType =  {
     _id?: string
@@ -38,4 +39,6 @@ export type BookType =  {
 }
 export type ResponseBooksType = {
     books: BookType[]
+    currentPage: number
+    totalPages: number
 }

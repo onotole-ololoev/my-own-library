@@ -1,8 +1,13 @@
 import React from 'react';
 import { Pagination } from 'antd';
 
-export const BooksPagination = () => {
+type BooksPaginationType = {
+    totalPages: number
+
+}
+
+export const BooksPagination = (props: BooksPaginationType) => {
     return (
-        <Pagination defaultCurrent={1} total={50} />
+        <Pagination defaultCurrent={1} total={props.totalPages} />
     )
 }

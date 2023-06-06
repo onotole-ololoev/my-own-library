@@ -16,6 +16,9 @@ type MainPageType = {}
 export const MainPage = (props: MainPageType) => {
 
     const [books, setBooks] = useState<BookType[]>([])
+
+    const [totalPages, setTotalPages] = useState(0)
+
     const [view, setView] = useState('tile');
 
     const {category} = useParams();
@@ -26,12 +29,14 @@ export const MainPage = (props: MainPageType) => {
             if (category) {
                 const result = await libraryAPI.getCategoryBooks(category)
                 setBooks(result.data.books);
+                setTotalPages(result.data.totalPages)
                 console.log('books with category=' + category + ' request')
                 console.log(result.data.books)
 
             } else {
                 const result = await libraryAPI.getAllBooks()
                 setBooks(result.data.books);
+                setTotalPages(result.data.totalPages)
                 console.log('all books request', result.data)
             }
         } catch (e: any) {
@@ -96,7 +101,7 @@ export const MainPage = (props: MainPageType) => {
                 })}
             </div>
 
-            <BooksPagination />
+            <BooksPagination totalPages={totalPages}/>
 
             <div> ИСХОДНЫЙ МАССИВ</div>
             {nonSortArr.map(el => <div>{el.title}</div>)}
