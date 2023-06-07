@@ -14,6 +14,7 @@ import {DeleteBookButton} from "../../components/bookCard/deleteBookButton/delet
 import './styles.scss'
 import {Simulate} from "react-dom/test-utils";
 import error = Simulate.error;
+import {MainPage} from "../mainPage/mainPage";
 
 
 export const BookPage = () => {
@@ -72,7 +73,7 @@ export const BookPage = () => {
     }, []);
 
     if (isDelete) {
-        return <div>this book deleted</div>
+        return <MainPage />
     }
 
     return (

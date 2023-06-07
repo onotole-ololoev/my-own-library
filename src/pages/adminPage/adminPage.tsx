@@ -1,9 +1,10 @@
 import {Button, Form, Input, Select, InputNumber} from 'antd';
-import React from 'react';
+import React, {useState} from 'react';
 
 import {libraryAPI} from "../../api/library-api";
 
 import './styles.scss'
+import {MainPage} from "../mainPage/mainPage";
 
 
 const {Option} = Select;
@@ -18,6 +19,9 @@ const tailLayout = {
 };
 
 export const AdminPage: React.FC = () => {
+
+    const [isFormSubmited, setIsFormSubmited] = useState<boolean>(false)
+
     const [form] = Form.useForm();
 
     const onBindingChange = (value: string) => {
@@ -35,6 +39,7 @@ export const AdminPage: React.FC = () => {
             })
         };
         fetchData()
+        setIsFormSubmited(true)
     }
 
         const onReset = () => {
@@ -55,6 +60,10 @@ export const AdminPage: React.FC = () => {
         //     // fetchData();
         //
         // }
+
+        if (isFormSubmited) {
+            return <MainPage />
+        }
 
         return (
             <Form
